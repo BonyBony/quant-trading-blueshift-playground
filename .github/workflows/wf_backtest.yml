@@ -1,0 +1,23 @@
+name: Blueshift Walk-Forward
+
+on:
+  push:
+    branches: [ main, init-pairs-wf-skeleton ]   # run on pushes to these branches
+  workflow_dispatch:                             # allow manual runs from the UI
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1 Checkout your branch
+      - uses: actions/checkout@v4
+
+      # 2 Set up a recent Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # 3 Install the Blueshift CLI (plus pandas deps)
+      - name: Install Blueshift CL
